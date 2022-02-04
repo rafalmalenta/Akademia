@@ -1,0 +1,22 @@
+plik js
+#7      - zmienna nie może zaczynać się od znaku #.
+#18     - błędna próba inkrementacji.
+#22     - zmienna bez celu wystarczy array.length.
+#32     - próba wykorzystania hoisting na funkcji strzalkowej.
+#34-37  - funkcja nie posiada parametru mimo że zawsze jest wywolywana przyjmując string,
+        Ponadto tworzy zawsze instancje hulk i nie zwraca jej mimo ze zawsze jest przypisywana do zmiennej.
+#40-41  - tworzenie bohatera w funkcji printującej jest naruszeniem single responsibility, dodatko jest tam string bez quotow.
+#43     - queryselector "#div" ktoś chce znaleźć element o id "div" nie ma takiego w pliku html.
+#45     - zmienna "x" nie jest zgodna z czystym kodem powinna być nazwana hero, nie używane parametry opcjonalne można pominąć.
+#47     - zly operator destrukturyzacj.
+#49     - o jeden </p> za dużo.
+#calość - brak obsługi re-renderu po kliknieciu.
+plik html
+#13     - literówka powinno byc --bg-color.
+#19     - literówka margin"t".
+#30,#31 - próba pisania reactem bez reacta.
+#32     - odradzane jest uzywanie wielu headerów tej sam wielkości.
+#32     - literówka podwójne zamknięcie div.
+#33     - nie mam pojecia jaką role mial pełnić ten button podpiecie eventu pod metode jest bardziej złożone,
+        poza tym jak 1 statyczne renderowany button mial obslużyć tablice obiektow?
+#35     - plik js nie jest podlinkowany

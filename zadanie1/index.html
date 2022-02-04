@@ -1,0 +1,38 @@
+<!Doctype html>
+<html lang='en'>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+/*
+literówki backgroundColor i margin-bottomt, złe wywloanie zmiennej w CSS
+*/
+    :root {
+    --bg-color: red;
+    }
+
+    body {
+    background-color: var(--bg-color);
+    font-family: Lato;
+    }
+    div {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    }
+    .hero {
+    border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<!--próby pisania JSX bez użycia reacta className {heroCount}.-->
+    <h1 aria-main="true">Hall of fame</h1>
+    <h2></h2>
+    <div class="heroContainer">
+    </div>
+
+<!--brak podlinkowania pliku js-->
+<script src="heroes-hall-of-fame.js"></script>
+</body>
+</html
