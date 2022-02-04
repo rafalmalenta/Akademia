@@ -17,17 +17,16 @@ class Step1 implements Renderable{
         this.insertionPoint.innerHTML = "";
         this.insertionPoint.append(this.componentHTML);
     }
+    handleClick(e:Event) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (e.target instanceof HTMLInputElement && e.target.matches("[data-submit]")) {
+            let view: Renderable = new Step2(this.insertionPoint);
+            view.render();
+        }
+    }
     registerEvents(){
-        document.body.addEventListener("click",e=>{
-            // console.log(new Date().getMilliseconds());
-            e.stopPropagation();
-            e.preventDefault();
-            if (e.target instanceof HTMLInputElement && e.target.matches("[data-submit]")) {
-                console.log(e)
-                let view:Renderable = new Step2(this.insertionPoint);
-                view.render();
-            }
-        })
+        document.body.addEventListener("click",this.handleClick.bind(this));
     }
     createHTML(){
         let wrapper:HTMLElement = document.createElement("div");
