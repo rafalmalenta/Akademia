@@ -1,3 +1,86 @@
 body{
-    background-color: blue;
+    background-color: #f5d4b3;
+    min-height: 100vh;
+    margin: 0 0 0 0;
+}
+#app{
+    z-index: 0;
+    position: relative;
+}
+.brand{
+    color: red;
+}
+form{
+    width: 70%;
+    min-width: 400px;
+    margin: 0 auto;
+}
+.backGround{
+    top: 0px;
+    opacity: 0.5;
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+}
+.modal{
+    background-color: beige;
+    text-align: center;
+    display: block;
+    position: absolute;
+    width: 60%;
+    top: 0%;
+    border: 2px solid black;
+    margin: 10% auto;
+    opacity: 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+}
+.header{
+    padding-top: 200px;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+.inputContainer{
+    display: block;
+    width: 50%;
+    float: left;
+    margin-bottom: 50px;
+}
+.inputContainer *{
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+}
+.inputContainer input{
+    font-size: 32px;
+    width: 200px;
+}
+
+#btn-main{
+    font-size: 22px;
+    background-color: red;
+    height: 3em;
+    width: 400px;
+    display: block;
+    margin: 50px auto;
+}
+.btn-secondary{
+    background-color: red;
+    width: 160px;
+    height: 7em;
+    font-size: 18px;
+    padding: 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }

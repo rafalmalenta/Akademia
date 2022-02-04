@@ -1,12 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+
 
 module.exports = {
+    devtool: false,
+    plugins: [new webpack.SourceMapDevToolPlugin({})],
     mode: "production", // "production" | "development" | "none"
     // Chosen mode tells webpack to use its built-in optimizations accordingly.
-    entry: {"functions":"./src/main.ts"}, // string | object | array
-    entry: {"style":"./src/style.css"},
+    entry: {
+        "main":"./src/main.ts",
+        // "style":"./src/style.css",
+    },
     module: {
         rules: [
             {
@@ -21,9 +27,9 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.css'],
+        extensions: ['.tsx', '.ts', '.js'],
     },
-
+    // plugins: [new webpack.SourceMapDevToolPlugin({})],
     output: {
         // options related to how webpack emits results
         path: path.resolve(__dirname, "public"), // string (default)
@@ -58,4 +64,5 @@ module.exports = {
         compress: true,
         port: 9000,
     },
+
 }
