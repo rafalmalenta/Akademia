@@ -2,12 +2,13 @@ import  Header  from "../components/Header";
 import Renderable from "../interface/Renderable";
 import Step1 from "./Step1";
 
-let header:Header = new Header
+let header:Header = new Header;
 
 class Step0 implements Renderable{
     insertionPoint:HTMLElement;
     componentHTML:HTMLElement;
     constructor(selector:HTMLElement) {
+        console.log("con")
         this.insertionPoint = selector;
         this.registerEvents();
         this.createHTML();
@@ -17,19 +18,22 @@ class Step0 implements Renderable{
         this.insertionPoint.append(this.componentHTML);
     }
     registerEvents(){
-        document.body.addEventListener("click",this.renderView.bind(this));
+        this.insertionPoint.addEventListener("click",this.boundHandler,false);
     }
-    renderView(e:Event){
+    cleanEvents(){
+        this.insertionPoint.removeEventListener("click",this.boundHandler,false);
+    }
+    boundHandler = this.handleClick.bind(this);
+    handleClick(e:Event){
         e.stopPropagation();
+        this.cleanEvents();
+        console.log("e.target")
         if (e.target instanceof HTMLButtonElement && e.target.matches("[data-step]")) {
+            console.log(e.target)
             let view:Renderable = new Step1(this.insertionPoint);
             this.cleanEvents();
             view.render();
-            console.log(e)
         }
-    }
-    cleanEvents(){
-        document.body.removeEventListener("click",this.renderView.bind(this),false);
     }
     createHTML(){
         let wrapper:HTMLElement = document.createElement("div");
@@ -42,4 +46,4 @@ class Step0 implements Renderable{
 
 }
 
-export default Step0
+export default Step0;

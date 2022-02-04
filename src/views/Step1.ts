@@ -13,6 +13,7 @@ class Step1 implements Renderable{
         this.registerEvents();
         this.createHTML();
     }
+    boundHandler = this.handleClick.bind(this);
     render(){
         this.insertionPoint.innerHTML = "";
         this.insertionPoint.append(this.componentHTML);
@@ -21,12 +22,18 @@ class Step1 implements Renderable{
         e.stopPropagation();
         e.preventDefault();
         if (e.target instanceof HTMLInputElement && e.target.matches("[data-submit]")) {
+            //todo this.validateForm()
+            this.cleanEvents();
             let view: Renderable = new Step2(this.insertionPoint);
             view.render();
         }
     }
     registerEvents(){
-        document.body.addEventListener("click",this.handleClick.bind(this));
+        this.insertionPoint.addEventListener("click",this.boundHandler,false);
+    }
+
+    cleanEvents(){
+        this.insertionPoint.removeEventListener("click",this.boundHandler,false);
     }
     createHTML(){
         let wrapper:HTMLElement = document.createElement("div");

@@ -17,32 +17,37 @@ class Step2 implements Renderable{
         this.registerEvents();
         this.createHTML();
     }
+    boundHandler = this.handleClick.bind(this);
     render(){
         this.insertionPoint.append(this.modal);
         this.insertionPoint.append(this.background);
     }
-    registerEvents(){
-        document.body.addEventListener("click",e=>{
-            e.stopPropagation();
-            if (e.target instanceof HTMLButtonElement && e.target.matches("[data-step]")) {
-                switch (parseInt(e.target.dataset.step)) {
-                    case 0:{
-                        let view:Renderable = new Step0(this.insertionPoint);
-                        view.render();
-                        break;
-                    }
-                    case 1:{
-                        let view:Renderable = new Step1(this.insertionPoint);
-                        view.render();
-                        break;
-                    }
+    handleClick(e:Event) {
+        e.stopPropagation();
+        if (e.target instanceof HTMLButtonElement && e.target.matches("[data-step]")) {
+            this.cleanEvents();
+            switch (parseInt(e.target.dataset.step)) {
+                case 0: {
+                    let view: Renderable = new Step0(this.insertionPoint);
+                    view.render();
+                    break;
+                }
+                case 1: {
+                    let view: Renderable = new Step1(this.insertionPoint);
+                    view.render();
+                    break;
                 }
             }
-        })
+        }
+    }
+    registerEvents(){
+        document.body.addEventListener("click",this.boundHandler,false);
+    }
+    cleanEvents(){
+        document.body.removeEventListener("click",this.boundHandler,false);
     }
 
     createHTML(){
-        this.registerEvents();
         let modal = document.createElement("div");
         modal.innerHTML = `   
         <h2>Paczka odebrana</h2>
